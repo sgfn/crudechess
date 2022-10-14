@@ -1,0 +1,10 @@
+bin/
+build/
+
+results/
+
+Makefile
+
+*.exe
+
+.vscode/

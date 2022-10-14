@@ -1,0 +1,16 @@
+#!/bin/bash
+
+FLAGS=""
+if [ $# -gt 0 ]; then
+    if [[ "$1" == "cppcheck" ]]; then
+        cppcheck --enable=all --suppress=missingIncludeSystem -I include/ src/
+        exit 0
+    elif [[ "$1" == "debug" ]]; then
+        FLAGS+="-DCRUDECHESS_DEBUG=ON"
+    elif [[ "$1" == "clean" ]]; then
+        rm -rf build/ && rm -rf bin/
+        exit 0
+    fi
+fi
+
+mkdir -p build && cd build && cmake ${FLAGS} .. && make install
